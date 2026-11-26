@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-2JTGJnRNRwpqTDVAOkoFqn6sKI2TdyOGuqkMeMZ0taQ='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' data: blob: https:; connect-src https://script.google.com https://script.googleusercontent.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-XCsx2345IqiCTPONDB8ke84XnKdaXe10d+hDPVXh5iA='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' data: blob: https:; connect-src https://script.google.com https://script.googleusercontent.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Verax — Trading sin humo</title>
@@ -859,10 +859,10 @@ a.enlace-p span{display:inline-block}
       <p class="bk-s" id="bkRes"></p>
       <div class="bk-acc">
         <a class="btn btn-verde" id="bkMeet" href="#" target="_blank" rel="noopener" hidden><i class="agua" aria-hidden="true"></i><span>Entrar a la llamada (Meet)</span></a>
-        <a class="btn btn-linea" id="bkWa" href="#" target="_blank" rel="noopener" hidden><span class="tx">Avísale al profe por WhatsApp</span></a>
+        <a class="btn btn-linea" id="bkWa" href="#" target="_blank" rel="noopener" hidden><span class="tx">¿Dudas? Escríbele al profe por WhatsApp</span></a>
         <a class="bk-lnk" id="bkCal" href="#" target="_blank" rel="noopener">Agregar a mi calendario</a>
       </div>
-      <p class="bk-s">Te llegó un correo con la invitación y el link del Meet. También te recordaremos antes de la llamada.</p>
+      <p class="bk-s">Te llegó un correo de confirmación con el link del Meet y también una invitación de calendario de <b>VeraxAcademy</b>. Si Gmail dice “remitente desconocido”, toca <b>Agregar al calendario</b>: es normal y es de Alejo. Revisa también spam. Te recordaremos antes de la llamada.</p>
     </section>
 
     <section class="bk-b" data-p="fb" hidden>
@@ -1206,7 +1206,7 @@ a.enlace-p span{display:inline-block}
       var meetOk=typeof j.meet==='string'&&/^https:\/\/meet\.google\.com\/[a-z0-9-]+$/i.test(j.meet);
       var m=q('#bkMeet');if(meetOk){m.href=j.meet;m.hidden=false}else m.hidden=true;
       var w=q('#bkWa');
-      if(WA_NUM){w.href='https://wa.me/'+WA_NUM+'?text='+encodeURIComponent('Hola profe Alejo, soy '+d.nombre+'. Agendé una llamada contigo para el '+fFecha(S.fecha)+' a las '+fHora(S.hora)+' (hora de Colombia).');w.hidden=false}else w.hidden=true;
+      if(WA_NUM){w.href='https://wa.me/'+WA_NUM+'?text='+encodeURIComponent('Hola, soy '+d.nombre+'. Tengo dudas respecto a nuestra llamada del '+fFecha(S.fecha)+' a las '+fHora(S.hora)+' (hora de Colombia): ');w.hidden=false}else w.hidden=true;
       var a=S.fecha.replace(/-/g,''),h1=+S.hora.slice(0,2),mi=S.hora.slice(3,5);
       q('#bkCal').href='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('Llamada con el profe Alejo · Verax')+'&dates='+a+'T'+p2(h1)+mi+'00/'+a+'T'+p2(h1+1)+mi+'00&ctz=America/Bogota&details='+encodeURIComponent('Llamada 1 a 1 con Alejo (Verax).'+(meetOk?' Meet: '+j.meet:''));
       paso('ok');
