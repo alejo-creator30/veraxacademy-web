@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-XCsx2345IqiCTPONDB8ke84XnKdaXe10d+hDPVXh5iA='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' data: blob: https:; connect-src https://script.google.com https://script.googleusercontent.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-95vnKWk0IRx43P29HIYLrm2dxDtAK712Q0scUXgGO3M='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' data: blob: https:; connect-src https://script.google.com https://script.googleusercontent.com; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Verax — Trading sin humo</title>
@@ -1325,18 +1325,15 @@ a.enlace-p span{display:inline-block}
       var post=t.tX!=null?cl01((now-t.tX)/700):0,fade=1-.45*post,xr=t.tX!=null?X(t.x):gx1+4;
       var xe=Math.min(xr,X(Math.min(N-1,Math.max(t.e,vis-1)))+paso*.5);
       // zona (hasta donde llega el precio)
-      if(kZ>0){ctx.globalAlpha=kZ*fade;ctx.fillStyle='rgba(43,182,115,.15)';ctx.fillRect(xa,Math.min(yE,yT),Math.max(1,xe-xa),Math.abs(yT-yE));ctx.fillStyle='rgba(242,118,78,.17)';ctx.fillRect(xa,Math.min(yE,yS),Math.max(1,xe-xa),Math.abs(yS-yE));ctx.globalAlpha=1}
-      // conector vertical en la entrada
-      ctx.lineWidth=1.5;ctx.setLineDash([]);
-      ctx.strokeStyle='rgba(242,118,78,.85)';ctx.beginPath();ctx.moveTo(xa,yE);ctx.lineTo(xa,yE+(yS-yE)*kS);ctx.stroke();
-      ctx.strokeStyle='rgba(43,182,115,.85)';ctx.beginPath();ctx.moveTo(xa,yE);ctx.lineTo(xa,yE+(yT-yE)*kT);ctx.stroke();
+      if(kZ>0){ctx.globalAlpha=kZ*fade;var x0=xa+cw/2+2;ctx.fillStyle='rgba(43,182,115,.10)';ctx.fillRect(x0,Math.min(yE,yT),Math.max(1,xe-x0),Math.abs(yT-yE));ctx.fillStyle='rgba(242,118,78,.11)';ctx.fillRect(x0,Math.min(yE,yS),Math.max(1,xe-x0),Math.abs(yS-yE));ctx.globalAlpha=1}
+      var x0=xa+cw/2+2;
       // línea de entrada (blanca, punteada) crece hacia la derecha
-      ctx.globalAlpha=fade;ctx.setLineDash([5,5]);ctx.strokeStyle='rgba(246,247,249,.85)';ctx.lineWidth=1.4;ctx.beginPath();ctx.moveTo(xa,Math.round(yE)+.5);ctx.lineTo(xa+(xr-xa)*kE,Math.round(yE)+.5);ctx.stroke();ctx.setLineDash([]);
+      ctx.globalAlpha=fade;ctx.setLineDash([4,5]);ctx.strokeStyle='rgba(246,247,249,.55)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x0,Math.round(yE)+.5);ctx.lineTo(x0+Math.max(0,xe-x0)*kE,Math.round(yE)+.5);ctx.stroke();
       // SL
       var hit=t.tX!=null?now-t.tX:-1,pulse=(hit>=0&&hit<700)?1+Math.sin(hit/700*Math.PI*3)*.5:0;
-      ctx.lineWidth=1.6+(!t.win&&pulse>0?pulse*2:0);ctx.strokeStyle=CORAL;ctx.beginPath();ctx.moveTo(xa,Math.round(yS)+.5);ctx.lineTo(xa+(xr-xa)*kS,Math.round(yS)+.5);ctx.stroke();
+      ctx.lineWidth=1.1+(!t.win&&pulse>0?pulse*1.6:0);ctx.strokeStyle='rgba(242,118,78,.8)';ctx.beginPath();ctx.moveTo(x0,Math.round(yS)+.5);ctx.lineTo(x0+Math.max(0,xe-x0)*kS,Math.round(yS)+.5);ctx.stroke();
       // TP
-      ctx.lineWidth=1.6+(t.win&&pulse>0?pulse*2.4:0);ctx.strokeStyle=VERDE;ctx.beginPath();ctx.moveTo(xa,Math.round(yT)+.5);ctx.lineTo(xa+(xr-xa)*kT,Math.round(yT)+.5);ctx.stroke();ctx.globalAlpha=1;
+      ctx.lineWidth=1.1+(t.win&&pulse>0?pulse*1.8:0);ctx.strokeStyle='rgba(43,182,115,.8)';ctx.beginPath();ctx.moveTo(x0,Math.round(yT)+.5);ctx.lineTo(x0+Math.max(0,xe-x0)*kT,Math.round(yT)+.5);ctx.stroke();ctx.setLineDash([]);ctx.globalAlpha=1;
       // etiquetas en el eje
       function tag(y,txt,col,k,txtc){if(k<=0||post>=1)return;ctx.globalAlpha=k*(1-post);var w=axisW-6;ctx.fillStyle=col;rr(gx1+4,y-9,w,18,3);ctx.fill();ctx.fillStyle=txtc||TINTA;ctx.font='700 '+(movil?9:10)+'px Inter,system-ui,sans-serif';ctx.textAlign='left';ctx.fillText(txt,gx1+8,y+.5);ctx.globalAlpha=1}
       tag(yE,movil?'ENT':'ENTRADA',PAPEL,kE);tag(yS,'SL',CORAL,kS);tag(yT,'TP',VERDE,kT);
